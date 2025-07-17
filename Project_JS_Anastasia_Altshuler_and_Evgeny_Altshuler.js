@@ -5,7 +5,7 @@
 // AND EVGENY ALTSHULER 
 /************************************************************************/
 
-
+//our array with contact information
 let contacts = [
   {
     id: 1,
@@ -54,24 +54,24 @@ let contacts = [
 
 
 /////////////////////////////////ADD HTML ELEMENT INTO UL///////////////////////////////////////////
-
-//Function for upload to the page all exist objects
 //Chosed UL for add into it all info about contacts
 const contactsListElement = document.querySelector('.user-list');
 const countOfContact = document.getElementById('count-people')
 
-//Created function forEacb that will upload all elementson the page
+//Function for upload to the page all exist objects.
 //contact is our Array with objects
 function showContactsList() {
-  contactsListElement.replaceChildren();
+  contactsListElement.replaceChildren(); //In beginning we delete all content of our ul
+  //Created function forEach that will upload all elementson the page
   contacts.forEach((contact) => {
-    //Created new element into html
+    //Created new element into html, by using insertAdjacentHTML command
+    //+ We use function createContacthtml that returned content of li. 
     contactsListElement.insertAdjacentHTML('beforeend', createContacthtml(contact));//Added new contect into UL (html)
-    //  contactsListElement.appendChild(liList)
   })
-  showContactsCount()
+  showContactsCount();//Use function that count leght of our Array
 }
 
+ //Get element from contacts.forEach function in  showContactsList function
 function createContacthtml(contact) {
   return ` <li class="user-items" data-id="${contact.id}" data-name="${contact.name.toLowerCase()}" data-phone="${contact.phone}">
             <div class="user-info">
@@ -84,11 +84,10 @@ function createContacthtml(contact) {
             <i class="delete action-icon"><img class="delete-img" src="./image/trashbasketdeleteremoveicon2.png" alt="trashbasket2"
                 title="delete"></i>
           </div>
-          </li>
-        `
+          </li>`
 }
 
-showContactsList();
+showContactsList();//Use function that count leght of our Array
 /////////////////////////////////////////////////END/////////////////////////////////////////////////
 
 contactsListElement.addEventListener('click', (e) => {
